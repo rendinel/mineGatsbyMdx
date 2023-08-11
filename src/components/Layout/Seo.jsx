@@ -32,6 +32,7 @@ export default function Seo({
   return (
     <>
       <title>{`${seo.title} - ${seo.description}`}</title>
+      <html lang='en' />
       <meta
         name='google-site-verification'
         content='igOICjk9bCW_fL7huhobl9wiAwCzVll7ichYyw41Vs8'
