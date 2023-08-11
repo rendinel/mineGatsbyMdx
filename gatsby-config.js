@@ -13,6 +13,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-mdx`,
+    `gatsby-plugin-git-lastmod`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -80,45 +81,25 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         query: `
-              {
-                site {
-                  siteMetadata {
-                    siteUrl
-                  }
-                }
-                allSitePage {
-                    nodes {
-                      path
-                    }
-                }
-                allMdx {
-                  edges {
-                    node {
-                      frontmatter {
-                        slug
-                      }
-                    }
-                  }
-                }
-              }
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            nodes {
+              path
+              pageContext
+            }
+          }
+        }
         `,
-        serialize: ({ site, allSitePage, allMdx }) => {
-          let pages = []
-          allSitePage.nodes.map((node) => {
-            pages.push({
-              url: site.siteMetadata.siteUrl + node.path,
-              changefreq: `daily`,
-              priority: 0.7,
-            })
-          })
-          allMdx.edges.map((edge) => {
-            pages.push({
-              url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
-              changefreq: `daily`,
-              priority: 0.7,
-            })
-          })
-          return pages
+        serialize: ({ path, pageContext }) => {
+          return {
+            url: path,
+            lastmod: pageContext?.lastMod,
+          }
         },
       },
     },
