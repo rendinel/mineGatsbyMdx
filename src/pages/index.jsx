@@ -34,21 +34,8 @@ export const query = graphql`
 
 export default function Index({ data }) {
   const posts = data.allMdx.nodes
-  const site = data.allSitePage.nodes
   return (
     <>
-      <Box>
-        {site.map((item, i) => {
-          let pages = []
-          pages.push({ url: item.path })
-          console.log(pages)
-          return (
-            <>
-              <Text key={i}>{item.path}</Text>
-            </>
-          )
-        })}
-      </Box>
       <Hero />
       <CardList title='Recent Posts' posts={posts} />
     </>

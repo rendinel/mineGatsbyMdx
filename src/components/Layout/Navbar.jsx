@@ -12,7 +12,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  Button,
 } from '@chakra-ui/react'
 import { Link as GatsbyLink, graphql, useStaticQuery } from 'gatsby'
 import axios from 'axios'
