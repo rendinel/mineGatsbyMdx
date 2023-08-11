@@ -6,14 +6,13 @@ module.exports = {
     twitterUsername: `@LucioRendine`,
     image: `/profilepic2.png`,
     icon: `/favicon.ico`,
-    siteUrl: `https://mrnutrition.vercel.app`,
+    siteUrl: `https://rad-dragon-ac9d8f.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-mdx`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -77,51 +76,51 @@ module.exports = {
           })),
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-sitemap`,
-    //   options: {
-    //     query: `
-    //           {
-    //             site {
-    //               siteMetadata {
-    //                 siteUrl
-    //               }
-    //             }
-    //             allSitePage {
-    //                 nodes {
-    //                   path
-    //                 }
-    //             }
-    //             allMdx {
-    //               edges {
-    //                 node {
-    //                   frontmatter {
-    //                     slug
-    //                   }
-    //                 }
-    //               }
-    //             }
-    //           }
-    //     `,
-    //     serialize: ({ site, allSitePage, allMdx }) => {
-    //       let pages = []
-    //       allSitePage.nodes.map((node) => {
-    //         pages.push({
-    //           url: site.siteMetadata.siteUrl + node.path,
-    //           changefreq: `daily`,
-    //           priority: 0.7,
-    //         })
-    //       })
-    //       allMdx.edges.map((edge) => {
-    //         pages.push({
-    //           url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
-    //           changefreq: `daily`,
-    //           priority: 0.7,
-    //         })
-    //       })
-    //       return pages
-    //     },
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+              {
+                site {
+                  siteMetadata {
+                    siteUrl
+                  }
+                }
+                allSitePage {
+                    nodes {
+                      path
+                    }
+                }
+                allMdx {
+                  edges {
+                    node {
+                      frontmatter {
+                        slug
+                      }
+                    }
+                  }
+                }
+              }
+        `,
+        serialize: ({ site, allSitePage, allMdx }) => {
+          let pages = []
+          allSitePage.nodes.map((node) => {
+            pages.push({
+              url: site.siteMetadata.siteUrl + node.path,
+              changefreq: `daily`,
+              priority: 0.7,
+            })
+          })
+          allMdx.edges.map((edge) => {
+            pages.push({
+              url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
+              changefreq: `daily`,
+              priority: 0.7,
+            })
+          })
+          return pages
+        },
+      },
+    },
   ],
 }
