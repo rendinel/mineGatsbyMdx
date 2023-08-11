@@ -4,7 +4,7 @@ module.exports = {
     author: `Lucio Rendine`,
     description: `My blog where i publish coding tutorials.`,
     twitterUsername: `@LucioRendine`,
-    image: `/profilepic2.png`,
+    image: `/profilepic.png`,
     icon: `/favicon.ico`,
     siteUrl: `https://rendinel.netlify.app`,
   },
