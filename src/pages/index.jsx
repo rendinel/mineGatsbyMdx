@@ -1,7 +1,6 @@
 import React from 'react'
 import Hero from '../components/Home/Hero'
 import Seo from '../components/Layout/Seo'
-import { Box, Text } from '@chakra-ui/react'
 import CardList from '../components/Home/CardList'
 import { graphql } from 'gatsby'
 

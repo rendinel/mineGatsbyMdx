@@ -6,7 +6,7 @@ module.exports = {
     twitterUsername: `@LucioRendine`,
     image: `/profilepic2.png`,
     icon: `/favicon.ico`,
-    siteUrl: `https://rad-dragon-ac9d8f.netlify.app`,
+    siteUrl: `https://rendinel.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-image`,
