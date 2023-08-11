@@ -8,6 +8,7 @@ export default function Category({ category }) {
       <Text
         _hover={{ color: '#0074d9' }}
         mt='0.5rem'
+        mr='0.5rem'
         mb='1rem'
         color='#757575'
         fontSize='0.875rem'

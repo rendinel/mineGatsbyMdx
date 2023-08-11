@@ -1,26 +1,16 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
-import { Link } from 'gatsby'
 import React from 'react'
+import { Box, Heading, Text, Link } from '@chakra-ui/react'
+import { Link as GatsbyLink } from 'gatsby'
+import Category from './Category'
 
 export default function Card({ post }) {
   const { date, title, preview, slug, category } = post.frontmatter
-
   return (
     <Box>
       <Text color='#757575' fontSize='0.875rem'>
         {date}
       </Text>
-      <Link to={`/blog/${category}`}>
-        <Text
-          _hover={{ color: '#0074d9' }}
-          mt='0.5rem'
-          mb='1rem'
-          color='#757575'
-          fontSize='0.875rem'
-        >
-          #{category}
-        </Text>
-      </Link>
+      <Category category={category} />
       <Heading color='#292929' as='h3' fontWeight='400' fontSize='1.5rem'>
         {title}
       </Heading>
@@ -33,7 +23,7 @@ export default function Card({ post }) {
       >
         {preview}
       </Text>
-      <Link to={`/blog/${slug}`}>
+      <Link as={GatsbyLink} to={`/blog/${slug}`}>
         <Text
           fontSize='1rem'
           textDecoration='underline'

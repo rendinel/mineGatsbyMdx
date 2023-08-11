@@ -1,8 +1,8 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import { Link } from 'gatsby'
 import React from 'react'
 import Card from './Card'
 import Pagination from './Pagination'
+import Category from './Category'
+import { Box, Flex, Heading } from '@chakra-ui/react'
 
 export default function CardList({
   posts,
@@ -26,18 +26,7 @@ export default function CardList({
       {cats && (
         <Flex mt='0.5rem' mb='1rem'>
           {cats.map((cat) => {
-            return (
-              <Link key={cat} to={`/blog/${cat}`}>
-                <Text
-                  mr='1rem'
-                  _hover={{ color: '#0074d9' }}
-                  color='#757575'
-                  fontSize='0.875rem'
-                >
-                  #{cat}
-                </Text>
-              </Link>
-            )
+            return <Category key={cat} category={cat} />
           })}
         </Flex>
       )}

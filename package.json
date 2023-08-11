@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +21,11 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/montserrat": "^5.0.5",
     "@mdx-js/react": "^2.3.0",
+    "axios": "^1.4.0",
     "framer-motion": "^10.15.0",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
+    "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-mdx": "^5.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
@@ -27,6 +34,6 @@
     "prism-react-renderer": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1"
+    "react-use-flexsearch": "^0.1.1"
   }
 }

@@ -1,15 +1,15 @@
 var plugins = [{
-      name: '@chakra-ui/gatsby-plugin',
-      plugin: require('/home/mr2k1/gatsbyDecapBlog/node_modules/@chakra-ui/gatsby-plugin/gatsby-ssr.js'),
-      options: {"plugins":[],"resetCSS":true,"portalZIndex":40},
-    },{
       name: 'gatsby-plugin-image',
       plugin: require('/home/mr2k1/gatsbyDecapBlog/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
       options: {"plugins":[]},
     },{
+      name: '@chakra-ui/gatsby-plugin',
+      plugin: require('/home/mr2k1/gatsbyDecapBlog/node_modules/@chakra-ui/gatsby-plugin/gatsby-ssr.js'),
+      options: {"plugins":[],"resetCSS":true,"portalZIndex":40},
+    },{
       name: 'gatsby-plugin-sitemap',
       plugin: require('/home/mr2k1/gatsbyDecapBlog/node_modules/gatsby-plugin-sitemap/gatsby-ssr.js'),
-      options: {"plugins":[],"query":"\n              {\n                site {\n                  siteMetadata {\n                    siteUrl\n                  }\n                }\n                allSitePage {\n                  edges {\n                    node {\n                      path\n                    }\n                  }\n                }\n                allMdx {\n                  edges {\n                    node {\n                      frontmatter {\n                        slug\n                      }\n                    }\n                  }\n                }\n              }\n        ","output":"/","createLinkInHead":true,"entryLimit":45000,"excludes":[]},
+      options: {"plugins":[],"query":"\n             {\n             site {\n                 siteMetadata {\n                     url\n                 }\n             }\n             allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {slug: {glob: \"!*wip*\"}}) {\n                 nodes {\n                     frontmatter {\n                         date(formatString: \"YYYY-MM-DD\")\n                     }\n                     slug\n                 }\n             }\n             }\n         ","output":"/","createLinkInHead":true,"entryLimit":45000,"excludes":[]},
     },{
       name: 'default-site-plugin',
       plugin: require('/home/mr2k1/gatsbyDecapBlog/gatsby-ssr.js'),

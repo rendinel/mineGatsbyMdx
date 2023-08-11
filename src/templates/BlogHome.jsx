@@ -33,6 +33,7 @@ export default function BlogHome({ data, pageContext }) {
   return (
     <>
       <CardList
+        isSearch
         isHome
         title='All Posts'
         posts={posts}

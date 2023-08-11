@@ -13,12 +13,7 @@ export default function Pagination({ currentPage, numberOfPages }) {
   return (
     <Stack mb='1.5rem' direction='row' justify='center'>
       <Stack direction='row'>
-        <Link
-          isDisabled={currentPage - 1 === 0}
-          _hover={{ underline: 'none' }}
-          as={GatsbyLink}
-          to={prevPage}
-        >
+        <Link _hover={{ underline: 'none' }} as={GatsbyLink} to={prevPage}>
           <Text fontSize='1.125rem'>&#8592; Prev</Text>
         </Link>
 

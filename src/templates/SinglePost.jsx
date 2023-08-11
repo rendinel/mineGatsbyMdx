@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Seo from '../components/Layout/Seo'
 import { MDXProvider } from '@mdx-js/react'
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { components } from '../components/SinglePost/shortcodes'
 import Category from '../components/Home/Category'
+import Seo from '../components/Layout/Seo'
 
 export const SinglePostQuery = graphql`
   query singlePostQueryQuery($id: String!) {

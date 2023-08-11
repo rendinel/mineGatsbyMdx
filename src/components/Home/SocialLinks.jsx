@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Text, Flex, useMediaQuery } from '@chakra-ui/react'
-import { Link } from 'gatsby'
+import { Box, Text, Flex, useMediaQuery, Link } from '@chakra-ui/react'
+import { Link as GatsbyLink } from 'gatsby'
 
 export default function SocialLink() {
   const [isLargerThan500] = useMediaQuery('(min-width: 500px)')
@@ -8,7 +8,7 @@ export default function SocialLink() {
     <>
       <Flex w='100%' justifyContent='space-between' alignItems='center'>
         <Box>
-          <Link to='/'>
+          <Link as={GatsbyLink} to='/'>
             <Text
               textDecoration='underline'
               _hover={{ color: '#0074d9' }}
@@ -19,7 +19,7 @@ export default function SocialLink() {
           </Link>
         </Box>
         <Box>
-          <Link to='/'>
+          <Link as={GatsbyLink} to='/'>
             <Text
               textDecoration='underline'
               _hover={{ color: '#0074d9' }}
@@ -30,7 +30,7 @@ export default function SocialLink() {
           </Link>
         </Box>
         <Box>
-          <Link to='/'>
+          <Link as={GatsbyLink} to='/'>
             <Text
               textDecoration='underline'
               _hover={{ color: '#0074d9' }}
@@ -41,7 +41,7 @@ export default function SocialLink() {
           </Link>
         </Box>
         <Box>
-          <Link to='/'>
+          <Link as={GatsbyLink} to='/'>
             <Text
               textDecoration='underline'
               _hover={{ color: '#0074d9' }}
@@ -54,7 +54,7 @@ export default function SocialLink() {
         {isLargerThan500 && (
           <>
             <Box>
-              <Link to='/'>
+              <Link as={GatsbyLink} to='/'>
                 <Text
                   textDecoration='underline'
                   _hover={{ color: '#0074d9' }}
@@ -65,7 +65,7 @@ export default function SocialLink() {
               </Link>
             </Box>
             <Box>
-              <Link to='/'>
+              <Link as={GatsbyLink} to='/'>
                 <Text
                   textDecoration='underline'
                   _hover={{ color: '#0074d9' }}
@@ -82,7 +82,7 @@ export default function SocialLink() {
         <>
           <Flex w='100%' justifyContent='space-evenly' alignItems='center'>
             <Box>
-              <Link to='/'>
+              <Link as={GatsbyLink} to='/'>
                 <Text
                   textDecoration='underline'
                   _hover={{ color: '#0074d9' }}
@@ -93,7 +93,7 @@ export default function SocialLink() {
               </Link>
             </Box>
             <Box>
-              <Link to='/'>
+              <Link as={GatsbyLink} to='/'>
                 <Text
                   textDecoration='underline'
                   _hover={{ color: '#0074d9' }}

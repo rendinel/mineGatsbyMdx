@@ -9,6 +9,18 @@ module.exports = {
     siteUrl: `https://mrnutrition.vercel.app`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
+      },
+    },
     {
       resolve: '@chakra-ui/gatsby-plugin',
       options: {
@@ -25,65 +37,91 @@ module.exports = {
         portalZIndex: 40,
       },
     },
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-mdx`,
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: `gatsby-plugin-local-search`,
       options: {
+        name: `blogs`,
+        engine: `flexsearch`,
+        engineOptions: {
+          tokenize: 'forward',
+        },
         query: `
               {
-                site {
-                  siteMetadata {
-                    siteUrl
-                  }
-                }
-                allSitePage {
-                  edges {
-                    node {
-                      path
-                    }
-                  }
-                }
                 allMdx {
-                  edges {
-                    node {
-                      frontmatter {
-                        slug
-                      }
+                  nodes {
+                    id
+                    frontmatter {
+                      slug
+                      author
+                      category
+                      date
+                      preview
+                      title
                     }
                   }
                 }
               }
         `,
-        serialize: ({ site, allSitePage, allMdx }) => {
-          let pages = []
-          allSitePage.edges.map((edge) => {
-            pages.push({
-              url: site.siteMetadata.siteUrl + edge.node.path,
-              changefreq: `daily`,
-              priority: 0.7,
-            })
-          })
-          allMdx.edges.map((edge) => {
-            pages.push({
-              url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
-              changefreq: `daily`,
-              priority: 0.7,
-            })
-          })
-
-          return pages
-        },
+        ref: 'id',
+        index: ['title'],
+        store: ['id', 'slug', 'author', 'category', 'date', 'preview', 'title'],
+        normalizer: ({ data }) =>
+          data.allMdx.nodes.map((node) => ({
+            id: node.id,
+            title: node.frontmatter.title,
+            category: node.frontmatter.category,
+            slug: node.frontmatter.slug,
+            author: node.frontmatter.author,
+            date: node.frontmatter.date,
+            preview: node.frontmatter.preview,
+          })),
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-sitemap`,
+    //   options: {
+    //     query: `
+    //           {
+    //             site {
+    //               siteMetadata {
+    //                 siteUrl
+    //               }
+    //             }
+    //             allSitePage {
+    //                 nodes {
+    //                   path
+    //                 }
+    //             }
+    //             allMdx {
+    //               edges {
+    //                 node {
+    //                   frontmatter {
+    //                     slug
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //     `,
+    //     serialize: ({ site, allSitePage, allMdx }) => {
+    //       let pages = []
+    //       allSitePage.nodes.map((node) => {
+    //         pages.push({
+    //           url: site.siteMetadata.siteUrl + node.path,
+    //           changefreq: `daily`,
+    //           priority: 0.7,
+    //         })
+    //       })
+    //       allMdx.edges.map((edge) => {
+    //         pages.push({
+    //           url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
+    //           changefreq: `daily`,
+    //           priority: 0.7,
+    //         })
+    //       })
+    //       return pages
+    //     },
+    //   },
+    // },
   ],
 }
