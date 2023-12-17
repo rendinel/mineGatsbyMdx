@@ -80,7 +80,7 @@ export default function SocialLink() {
       </Flex>
       {!isLargerThan500 && (
         <>
-          <Flex w='100%' justifyContent='space-evenly' alignItems='center'>
+          <Flex w='100%' justifyContent='flex-start' alignItems='center'>
             <Box>
               <Link as={GatsbyLink} to='/'>
                 <Text
@@ -98,6 +98,7 @@ export default function SocialLink() {
                   textDecoration='underline'
                   _hover={{ color: '#0074d9' }}
                   fontSize='1rem'
+                  ml='4.7rem'
                 >
                   GITHUB
                 </Text>
